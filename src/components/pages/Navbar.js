@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useState}from 'react';
 import {Link} from 'react-router-dom';
-import {AiOutlineBars} from 'react-icons/ai';
+import {FaBars, FaTimes} from 'react-icons/fa';
 import {MdFingerprint} from 'react-icons/md';
 import './Navbar.css';
 
 
 function Navbar() {
+
+    const [click, setClick] = useState(false);
+
+    const handleClick = () => setClick(!click);
+
+
     return (
         <>
             <div className="navbar">
@@ -14,7 +20,8 @@ function Navbar() {
                         <MdFingerprint className='navbar-icon' />
                         Mango-Jam
                     </Link>
-                    <div className="menu-icon" />
+                    <div className="menu-icon" onClick={handleClick} />
+                    {click ? <FaTimes /> : <FaBars />}
                 </div>
             </div>
         </>
